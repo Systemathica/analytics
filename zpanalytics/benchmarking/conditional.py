@@ -53,7 +53,7 @@ class ConditionalPerformance_g_Returns(Func):
         df = operand.join(params['environment_returns'].to_frame(benchmark), how='inner')
 
         # calculate the percentiles of the environment returns
-        percentiles = np.percentile(df[params['environment_label']], params['bins'])
+        percentiles = np.percentile(df[benchmark], params['bins'])
         df['bin'] = df[benchmark].apply(lambda x: determine_bin(x, percentiles))
         df['bin_labels'] = df['bin'].map(dict(enumerate(params['bin_labels'])))
         avg_returns = df.groupby('bin_labels').mean()
