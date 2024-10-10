@@ -118,20 +118,6 @@ class Align_g_Weights_p_Returns(Func):
 
             res_ddf[plabel] = pvalue
 
-            # # save all the intermediate results to xls
-            # worksp = r"C:\Users\raman\OneDrive\MSx\CMC\Applications\Citadel\Screening"
-            # XLS_g_DoDf(dict(fpath=(worksp,f'PPWeights_g_RebalanceWeights')))(dict(
-            #     returns=returns,
-            #     bodStartingWeights=bodStartingWeights,
-            #     startWeightsOnAllDays=startWeightsOnAllDays,
-            #     cumulativeReturns=cumulativeReturns,
-            #     assetCumulativeReturns=assetCumulativeReturns,
-            #     portfolioCumulativeReturns=portfolioCumulativeReturns,
-            #     nonNormalizedWeights=nonNormalizedWeights,
-            #     normalizedWeights=normalizedWeights,
-            #     pvalue=pvalue
-            # ))
-
         # join the dictionary of df res_ddf
         res = pd.concat(res_ddf, axis=1, names=[params['portfolio_by']])
 

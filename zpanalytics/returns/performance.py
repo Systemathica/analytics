@@ -48,12 +48,11 @@ class Performance_g_Returns(Func):
     def _execute(cls, operand=None, params: dict = None) -> DataFrame:
         returns = operand.fillna(0.0)
 
-        rfr = params['rfr'].fillna(method='ffill')
-        rfr = rfr.reindex(returns.index, method='ffill')
-
         if params['rfr'] is None:
             excess_returns = returns
         else:
+            rfr = params['rfr'].fillna(method='ffill')
+            rfr = rfr.reindex(returns.index, method='ffill')
             excess_returns = returns.sub(rfr, axis=0)
 
         geometric_mean = scipy.stats.mstats.gmean(1.0 + excess_returns)
